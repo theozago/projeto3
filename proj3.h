@@ -11,6 +11,7 @@ typedef struct {
     int prioridade;
     char categoria[100];
     char descricao[300];
+    int estado;
 } Tarefa;
 
 typedef struct {
@@ -29,4 +30,5 @@ void printMenu();
 int salvarTarefas(ListaDeTarefas *lt, char *arquivo);
 //para carregar as tarefas no arquivos
 int carregarTarefas(ListaDeTarefas *lt, char *arquivo);
+int alterarTarefa(ListaDeTarefas *lt);
 #endif //PROJETO_PROJ_H
