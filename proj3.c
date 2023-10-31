@@ -135,5 +135,55 @@ int carregarTarefas(ListaDeTarefas *lt, char *arquivo){
 
 }
 
+int alterarTarefa(ListaDeTarefas *lt) {
+    int num;
+    printf("Digite o numero da tarefa que deseja alterar: ");
+    scanf("%d", &num);
+
+    if (num >= 1 && num <= lt->qtd) {
+        Tarefa *tarefa = &lt->tarefas[num - 1];
+
+        printf("Escolha o campo que deseja alterar:\n");
+        printf("1 - Prioridade\n");
+        printf("2 - Categoria\n");
+        printf("3 - Descricao\n");
+        printf("4 - Estado\n");
+
+        int opcao;
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Nova prioridade: ");
+                scanf("%d", &tarefa->prioridade);
+                break;
+            case 2:
+                printf("Nova categoria: ");
+                scanf("%s", tarefa->categoria);
+                break;
+            case 3:
+                printf("Nova descricao: ");
+                scanf("%s", tarefa->descricao);
+                break;
+            case 4:
+                printf("Novo estado (0 - Nao iniciado, 1 - Em andamento, 2 - completo): ");
+                scanf("%d", &tarefa->estado);
+                if (tarefa->estado < 0 || tarefa->estado > 2) {
+                    printf("Estado invalido. Use 0 para Nao iniciado, 1 para Em andamento, ou 2 para completo.\n");
+                    return 0;
+                }
+                break;
+            default:
+                printf("Opcao invalida.\n");
+                return 0;
+        }
+
+        printf("Tarefa alterada com sucesso!\n");
+        return 1;
+    } else {
+        printf("Nao existe essa tarefa.\n");
+        return 0;
+    }
+}
 
 
