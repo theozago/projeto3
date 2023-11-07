@@ -25,47 +25,6 @@ int main() {
             listarTarefas(lt);
         } else if (opcao == 4) {
             alterarTarefa(&lt);
-        } else if (opcao == 5) {
-            int prioridade;
-            printf("Digite a prioridade para filtrar: ");
-            scanf("%d", &prioridade);
-            filtrarTarefasPorPrioridade(lt, prioridade);
-        } else if (opcao == 6) {
-            int estado;
-            printf("Digite o estado para filtrar (0, 1 ou 2): ");
-            scanf("%d", &estado);
-            filtrarTarefasPorEstado(lt, estado);
-        } else if (opcao == 7) {
-            char categoria[100];
-            printf("Digite a categoria para filtrar: ");
-            scanf("%s", categoria);
-            filtrarTarefasPorCategoria(lt, categoria);
-        } else if (opcao == 8) {
-            int prioridade;
-            char categoria[100];
-            printf("Digite a prioridade para filtrar: ");
-            scanf("%d", &prioridade);
-            printf("Digite a categoria para filtrar: ");
-            scanf("%s", categoria);
-            filtrarTarefasPorPrioridadeECategoria(lt, prioridade, categoria);
-        } else if (opcao == 9) {
-            int prioridade;
-            printf("Digite a prioridade para exportar: ");
-            scanf("%d", &prioridade);
-            exportarTarefasPorPrioridade(lt, prioridade, "tarefas_prioridade.txt");
-        } else if (opcao == 10) {
-            char categoria[100];
-            printf("Digite a categoria para exportar: ");
-            scanf("%s", categoria);
-            exportarTarefasPorCategoria(lt, categoria, "tarefas_categoria.txt");
-        } else if (opcao == 11) {
-            int prioridade;
-            char categoria[100];
-            printf("Digite a prioridade para exportar: ");
-            scanf("%d", &prioridade);
-            printf("Digite a categoria para exportar: ");
-            scanf("%s", categoria);
-            exportarTarefasPorPrioridadeECategoria(lt, prioridade, categoria, "tarefas_prioridade_categoria.txt");
         } else {
             printf("Opção inválida\n");
         }
