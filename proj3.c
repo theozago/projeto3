@@ -184,6 +184,45 @@ int filtrarTarefasPorEstado(ListaDeTarefas lt, int estado) {
         printf("Nenhuma tarefa encontrada com estado %d.\n", estado);
     }
 }
+int filtrarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[]) {
+    int encontrou = 0;
+    printf("Tarefas com categoria %s:\n", categoria);
+
+    for (int i = 0; i < lt.qtd; i++) {
+        if (strcmp(lt.tarefas[i].categoria, categoria) == 0) {
+            printf("Tarefa: %d\n", i + 1);
+            printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+            printf("Categoria: %s\n", lt.tarefas[i].categoria);
+            printf("Descricao: %s\n", lt.tarefas[i].descricao);
+            printf("Estado: %d\n", lt.tarefas[i].estado);
+            encontrou = 1;
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhuma tarefa encontrada com categoria %s.\n", categoria);
+    }
+}
+
+int filtrarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, const char categoria[]) {
+    int encontrou = 0;
+    printf("Tarefas com prioridade %d e categoria %s:\n", prioridade, categoria);
+
+    for (int i = 0; i < lt.qtd; i++) {
+        if (lt.tarefas[i].prioridade == prioridade && strcmp(lt.tarefas[i].categoria, categoria) == 0) {
+            printf("Tarefa: %d\n", i + 1);
+            printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+            printf("Categoria: %s\n", lt.tarefas[i].categoria);
+            printf("Descricao: %s\n", lt.tarefas[i].descricao);
+            printf("Estado: %d\n", lt.tarefas[i].estado);
+            encontrou = 1;
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhuma tarefa encontrada com prioridade %d e categoria %s.\n", prioridade, categoria);
+    }
+}
 
 
 

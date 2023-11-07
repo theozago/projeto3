@@ -35,6 +35,19 @@ int main() {
             printf("Digite o estado para filtrar (0, 1 ou 2): ");
             scanf("%d", &estado);
             filtrarTarefasPorEstado(lt, estado);
+        }else if (opcao == 7) {
+            char categoria[100];
+            printf("Digite a categoria para filtrar: ");
+            scanf("%s", categoria);
+            filtrarTarefasPorCategoria(lt, categoria);
+        } else if (opcao == 8) {
+            int prioridade;
+            char categoria[100];
+            printf("Digite a prioridade para filtrar: ");
+            scanf("%d", &prioridade);
+            printf("Digite a categoria para filtrar: ");
+            scanf("%s", categoria);
+            filtrarTarefasPorPrioridadeECategoria(lt, prioridade, categoria);
         } else {
             printf("Opção inválida\n");
         }
