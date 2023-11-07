@@ -145,6 +145,45 @@ int listarTarefas(ListaDeTarefas lt) {
 
     return 1;
 }
+int filtrarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade) {
+    int encontrou = 0;
+    printf("Tarefas com prioridade %d:\n", prioridade);
+
+    for (int i = 0; i < lt.qtd; i++) {
+        if (lt.tarefas[i].prioridade == prioridade) {
+            printf("Tarefa: %d\n", i + 1);
+            printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+            printf("Categoria: %s\n", lt.tarefas[i].categoria);
+            printf("Descricao: %s\n", lt.tarefas[i].descricao);
+            printf("Estado: %d\n", lt.tarefas[i].estado);
+            encontrou = 1;
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhuma tarefa encontrada com prioridade %d.\n", prioridade);
+    }
+}
+
+int filtrarTarefasPorEstado(ListaDeTarefas lt, int estado) {
+    int encontrou = 0;
+    printf("Tarefas com estado %d:\n", estado);
+
+    for (int i = 0; i < lt.qtd; i++) {
+        if (lt.tarefas[i].estado == estado) {
+            printf("Tarefa: %d\n", i + 1);
+            printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+            printf("Categoria: %s\n", lt.tarefas[i].categoria);
+            printf("Descricao: %s\n", lt.tarefas[i].descricao);
+            printf("Estado: %d\n", lt.tarefas[i].estado);
+            encontrou = 1;
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhuma tarefa encontrada com estado %d.\n", estado);
+    }
+}
 
 
 

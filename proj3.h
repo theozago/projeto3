@@ -17,7 +17,8 @@ int cadastrarTarefa(ListaDeTarefas *lt);
 int deletarTarefas(ListaDeTarefas *lt);
 int listarTarefas(ListaDeTarefas lt);
 int alterarTarefa(ListaDeTarefas *lt);
-
+int filtrarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade);
+int filtrarTarefasPorEstado(ListaDeTarefas lt, int estado);
 
 void printMenu();
 int salvarTarefas(ListaDeTarefas *lt, const char *arquivo);

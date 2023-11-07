@@ -25,6 +25,16 @@ int main() {
             listarTarefas(lt);
         } else if (opcao == 4) {
             alterarTarefa(&lt);
+        }else if (opcao == 5) {
+            int prioridade;
+            printf("Digite a prioridade para filtrar: ");
+            scanf("%d", &prioridade);
+            filtrarTarefasPorPrioridade(lt, prioridade);
+        } else if (opcao == 6) {
+            int estado;
+            printf("Digite o estado para filtrar (0, 1 ou 2): ");
+            scanf("%d", &estado);
+            filtrarTarefasPorEstado(lt, estado);
         } else {
             printf("Opção inválida\n");
         }
