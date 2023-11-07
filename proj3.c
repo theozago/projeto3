@@ -183,6 +183,7 @@ int alterarTarefa(ListaDeTarefas *lt) {
     } else {
         printf("Nao existe essa tarefa.\n");
         return 0;
+        
     }
 }
 
