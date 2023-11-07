@@ -25,7 +25,6 @@ int exportarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade, const char a
 int exportarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[], const char arquivo[]);
 int exportarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, const char categoria[], const char arquivo[]);
 
-
 void printMenu();
 int salvarTarefas(ListaDeTarefas *lt, const char *arquivo);
 int carregarTarefas(ListaDeTarefas *lt, const char *arquivo);

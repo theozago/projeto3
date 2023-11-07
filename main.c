@@ -25,7 +25,7 @@ int main() {
             listarTarefas(lt);
         } else if (opcao == 4) {
             alterarTarefa(&lt);
-        }else if (opcao == 5) {
+        } else if (opcao == 5) {
             int prioridade;
             printf("Digite a prioridade para filtrar: ");
             scanf("%d", &prioridade);
@@ -35,7 +35,7 @@ int main() {
             printf("Digite o estado para filtrar (0, 1 ou 2): ");
             scanf("%d", &estado);
             filtrarTarefasPorEstado(lt, estado);
-        }else if (opcao == 7) {
+        } else if (opcao == 7) {
             char categoria[100];
             printf("Digite a categoria para filtrar: ");
             scanf("%s", categoria);
@@ -48,7 +48,7 @@ int main() {
             printf("Digite a categoria para filtrar: ");
             scanf("%s", categoria);
             filtrarTarefasPorPrioridadeECategoria(lt, prioridade, categoria);
-        }else if (opcao == 9) {
+        } else if (opcao == 9) {
             int prioridade;
             printf("Digite a prioridade para exportar: ");
             scanf("%d", &prioridade);

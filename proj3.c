@@ -107,44 +107,6 @@ int alterarTarefa(ListaDeTarefas *lt) {
     }
 }
 
-
-
-int deletarTarefas(ListaDeTarefas *lt) {
-    int num;
-    printf("Digite o número da tarefa que deseja deletar: ");
-    scanf("%d", &num);
-
-    if (num >= 1 && num <= lt->qtd) {
-        for (int i = num - 1; i < lt->qtd - 1; i++) {
-            lt->tarefas[i] = lt->tarefas[i + 1];
-        }
-        lt->qtd--;
-
-        printf("Tarefa com o numero %d foi deletada com sucesso\n", num);
-        return 1;
-    } else {
-        printf("Nao existe essa tarefa.\n");
-        return 0;
-    }
-}
-
-int listarTarefas(ListaDeTarefas lt) {
-    if (lt.qtd == 0) {
-        printf("Nenhuma tarefa cadastrada.\n");
-        return 0;
-    }
-
-    printf("Lista de Tarefas:\n");
-    for (int i = 0; i < lt.qtd; i++) {
-        printf("Tarefa: %d\n", i + 1);
-        printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
-        printf("Categoria: %s\n", lt.tarefas[i].categoria);
-        printf("Descricao: %s\n", lt.tarefas[i].descricao);
-        printf("Estado: %d\n", lt.tarefas[i].estado);
-    }
-
-    return 1;
-}
 int filtrarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade) {
     int encontrou = 0;
     printf("Tarefas com prioridade %d:\n", prioridade);
@@ -184,6 +146,7 @@ int filtrarTarefasPorEstado(ListaDeTarefas lt, int estado) {
         printf("Nenhuma tarefa encontrada com estado %d.\n", estado);
     }
 }
+
 int filtrarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[]) {
     int encontrou = 0;
     printf("Tarefas com categoria %s:\n", categoria);
@@ -223,6 +186,7 @@ int filtrarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, con
         printf("Nenhuma tarefa encontrada com prioridade %d e categoria %s.\n", prioridade, categoria);
     }
 }
+
 int exportarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade, const char arquivo[]) {
     FILE *arq;
     arq = fopen(arquivo, "w");
@@ -298,6 +262,43 @@ int exportarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, co
 
     fclose(arq);
     printf("Tarefas com prioridade %d e categoria %s exportadas para o arquivo %s.\n", prioridade, categoria, arquivo);
+    return 1;
+}
+
+int deletarTarefas(ListaDeTarefas *lt) {
+    int num;
+    printf("Digite o número da tarefa que deseja deletar: ");
+    scanf("%d", &num);
+
+    if (num >= 1 && num <= lt->qtd) {
+        for (int i = num - 1; i < lt->qtd - 1; i++) {
+            lt->tarefas[i] = lt->tarefas[i + 1];
+        }
+        lt->qtd--;
+
+        printf("Tarefa com o numero %d foi deletada com sucesso\n", num);
+        return 1;
+    } else {
+        printf("Nao existe essa tarefa.\n");
+        return 0;
+    }
+}
+
+int listarTarefas(ListaDeTarefas lt) {
+    if (lt.qtd == 0) {
+        printf("Nenhuma tarefa cadastrada.\n");
+        return 0;
+    }
+
+    printf("Lista de Tarefas:\n");
+    for (int i = 0; i < lt.qtd; i++) {
+        printf("Tarefa: %d\n", i + 1);
+        printf("Prioridade: %d\n", lt.tarefas[i].prioridade);
+        printf("Categoria: %s\n", lt.tarefas[i].categoria);
+        printf("Descricao: %s\n", lt.tarefas[i].descricao);
+        printf("Estado: %d\n", lt.tarefas[i].estado);
+    }
+
     return 1;
 }
 
