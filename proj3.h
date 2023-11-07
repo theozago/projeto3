@@ -21,6 +21,10 @@ int filtrarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade);
 int filtrarTarefasPorEstado(ListaDeTarefas lt, int estado);
 int filtrarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[]);
 int filtrarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, const char categoria[]);
+int exportarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade, const char arquivo[]);
+int exportarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[], const char arquivo[]);
+int exportarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, const char categoria[], const char arquivo[]);
+
 
 void printMenu();
 int salvarTarefas(ListaDeTarefas *lt, const char *arquivo);

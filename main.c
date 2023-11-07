@@ -48,6 +48,24 @@ int main() {
             printf("Digite a categoria para filtrar: ");
             scanf("%s", categoria);
             filtrarTarefasPorPrioridadeECategoria(lt, prioridade, categoria);
+        }else if (opcao == 9) {
+            int prioridade;
+            printf("Digite a prioridade para exportar: ");
+            scanf("%d", &prioridade);
+            exportarTarefasPorPrioridade(lt, prioridade, "tarefas_prioridade.txt");
+        } else if (opcao == 10) {
+            char categoria[100];
+            printf("Digite a categoria para exportar: ");
+            scanf("%s", categoria);
+            exportarTarefasPorCategoria(lt, categoria, "tarefas_categoria.txt");
+        } else if (opcao == 11) {
+            int prioridade;
+            char categoria[100];
+            printf("Digite a prioridade para exportar: ");
+            scanf("%d", &prioridade);
+            printf("Digite a categoria para exportar: ");
+            scanf("%s", categoria);
+            exportarTarefasPorPrioridadeECategoria(lt, prioridade, categoria, "tarefas_prioridade_categoria.txt");
         } else {
             printf("Opção inválida\n");
         }

@@ -223,6 +223,83 @@ int filtrarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, con
         printf("Nenhuma tarefa encontrada com prioridade %d e categoria %s.\n", prioridade, categoria);
     }
 }
+int exportarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade, const char arquivo[]) {
+    FILE *arq;
+    arq = fopen(arquivo, "w");
+
+    if (arq == NULL) {
+        printf("Erro ao abrir o arquivo %s.\n", arquivo);
+        return 0;
+    }
+
+    fprintf(arq, "Tarefas com prioridade %d:\n", prioridade);
+
+    for (int i = 0; i < lt.qtd; i++) {
+        if (lt.tarefas[i].prioridade == prioridade) {
+            fprintf(arq, "Tarefa: %d\n", i + 1);
+            fprintf(arq, "Prioridade: %d\n", lt.tarefas[i].prioridade);
+            fprintf(arq, "Categoria: %s\n", lt.tarefas[i].categoria);
+            fprintf(arq, "Descricao: %s\n", lt.tarefas[i].descricao);
+            fprintf(arq, "Estado: %d\n", lt.tarefas[i].estado);
+        }
+    }
+
+    fclose(arq);
+    printf("Tarefas com prioridade %d exportadas para o arquivo %s.\n", prioridade, arquivo);
+    return 1;
+}
+
+int exportarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[], const char arquivo[]) {
+    FILE *arq;
+    arq = fopen(arquivo, "w");
+
+    if (arq == NULL) {
+        printf("Erro ao abrir o arquivo %s.\n", arquivo);
+        return 0;
+    }
+
+    fprintf(arq, "Tarefas com categoria %s:\n", categoria);
+
+    for (int i = 0; i < lt.qtd; i++) {
+        if (strcmp(lt.tarefas[i].categoria, categoria) == 0) {
+            fprintf(arq, "Tarefa: %d\n", i + 1);
+            fprintf(arq, "Prioridade: %d\n", lt.tarefas[i].prioridade);
+            fprintf(arq, "Categoria: %s\n", lt.tarefas[i].categoria);
+            fprintf(arq, "Descricao: %s\n", lt.tarefas[i].descricao);
+            fprintf(arq, "Estado: %d\n", lt.tarefas[i].estado);
+        }
+    }
+
+    fclose(arq);
+    printf("Tarefas com categoria %s exportadas para o arquivo %s.\n", categoria, arquivo);
+    return 1;
+}
+
+int exportarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, const char categoria[], const char arquivo[]) {
+    FILE *arq;
+    arq = fopen(arquivo, "w");
+
+    if (arq == NULL) {
+        printf("Erro ao abrir o arquivo %s.\n", arquivo);
+        return 0;
+    }
+
+    fprintf(arq, "Tarefas com prioridade %d e categoria %s:\n", prioridade, categoria);
+
+    for (int i = 0; i < lt.qtd; i++) {
+        if (lt.tarefas[i].prioridade == prioridade && strcmp(lt.tarefas[i].categoria, categoria) == 0) {
+            fprintf(arq, "Tarefa: %d\n", i + 1);
+            fprintf(arq, "Prioridade: %d\n", lt.tarefas[i].prioridade);
+            fprintf(arq, "Categoria: %s\n", lt.tarefas[i].categoria);
+            fprintf(arq, "Descricao: %s\n", lt.tarefas[i].descricao);
+            fprintf(arq, "Estado: %d\n", lt.tarefas[i].estado);
+        }
+    }
+
+    fclose(arq);
+    printf("Tarefas com prioridade %d e categoria %s exportadas para o arquivo %s.\n", prioridade, categoria, arquivo);
+    return 1;
+}
 
 
 
