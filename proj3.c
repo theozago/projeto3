@@ -1,8 +1,9 @@
-#include <stdio.h>
-#include "proj3.h"
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>   // Inclui a biblioteca padrão de entrada/saída.
+#include "proj3.h"   // Inclui o arquivo de cabeçalho "proj3.h" (presumivelmente contém a definição das estruturas e funções utilizadas).
+#include <stdlib.h>  // Inclui a biblioteca padrão para funções de alocação de memória, como malloc.
+#include <string.h>  // Inclui a biblioteca padrão para operações de string, como strcmp.
 
+// Função que imprime o menu do programa.
 void printMenu() {
     printf("\nMenu:\n");
     printf("1 Cadastrar Tarefa\n");
@@ -20,8 +21,9 @@ void printMenu() {
     printf("Escolha uma opcao: ");
 }
 
+// Função para cadastrar uma nova tarefa na lista de tarefas.
 int cadastrarTarefa(ListaDeTarefas *lt) {
-    if (lt->qtd < 100) {
+    if (lt->qtd < 100) {  // Verifica se a lista de tarefas não está cheia.
         Tarefa novaTarefa;
 
         printf("Digite a prioridade da tarefa entre 0 e 10: ");
@@ -29,7 +31,7 @@ int cadastrarTarefa(ListaDeTarefas *lt) {
 
         if (novaTarefa.prioridade < 0 || novaTarefa.prioridade > 10) {
             printf("Prioridade invalida. A prioridade deve estar entre 0 e 10.\n");
-            return 0;
+            return 0;  // Retorna 0 para indicar um erro.
         }
 
         printf("Digite a categoria da tarefa: ");
@@ -43,7 +45,7 @@ int cadastrarTarefa(ListaDeTarefas *lt) {
 
         if (novaTarefa.estado < 0 || novaTarefa.estado > 2) {
             printf("Estado invalido. Use 0 para Nao iniciado, 1 para Em andamento, ou 2 para completo.\n");
-            return 0;
+            return 0;  // Retorna 0 para indicar um erro.
         }
 
         lt->tarefas[lt->qtd] = novaTarefa;
@@ -56,6 +58,7 @@ int cadastrarTarefa(ListaDeTarefas *lt) {
     }
 }
 
+// Função para alterar uma tarefa existente na lista.
 int alterarTarefa(ListaDeTarefas *lt) {
     int num;
     printf("Digite o numero da tarefa que deseja alterar: ");
@@ -91,22 +94,23 @@ int alterarTarefa(ListaDeTarefas *lt) {
                 scanf("%d", &tarefa->estado);
                 if (tarefa->estado < 0 || tarefa->estado > 2) {
                     printf("Estado invalido. Use 0 para Nao iniciado, 1 para Em andamento, ou 2 para completo.\n");
-                    return 0;
+                    return 0;  // Retorna 0 para indicar um erro.
                 }
                 break;
             default:
                 printf("Opcao invalida.\n");
-                return 0;
+                return 0;  // Retorna 0 para indicar um erro.
         }
 
         printf("Tarefa alterada com sucesso!\n");
         return 1;
     } else {
         printf("Nao existe essa tarefa.\n");
-        return 0;
+        return 0;  // Retorna 0 para indicar um erro.
     }
 }
 
+// Função para filtrar tarefas por prioridade e imprimir as correspondentes.
 int filtrarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade) {
     int encontrou = 0;
     printf("Tarefas com prioridade %d:\n", prioridade);
@@ -123,10 +127,11 @@ int filtrarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade) {
     }
 
     if (!encontrou) {
-        printf("Nenhuma tarefa encontrada com prioridade %d.\n", prioridade);
+        printf("Nenhuma tarefa encontrada com prioridade %d.\n");
     }
 }
 
+// Função para filtrar tarefas por estado e imprimir as correspondentes.
 int filtrarTarefasPorEstado(ListaDeTarefas lt, int estado) {
     int encontrou = 0;
     printf("Tarefas com estado %d:\n", estado);
@@ -143,10 +148,11 @@ int filtrarTarefasPorEstado(ListaDeTarefas lt, int estado) {
     }
 
     if (!encontrou) {
-        printf("Nenhuma tarefa encontrada com estado %d.\n", estado);
+        printf("Nenhuma tarefa encontrada com estado %d.\n");
     }
 }
 
+// Função para filtrar tarefas por categoria e imprimir as correspondentes.
 int filtrarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[]) {
     int encontrou = 0;
     printf("Tarefas com categoria %s:\n", categoria);
@@ -167,6 +173,7 @@ int filtrarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[]) {
     }
 }
 
+// Função para filtrar tarefas por prioridade e categoria e imprimir as correspondentes.
 int filtrarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, const char categoria[]) {
     int encontrou = 0;
     printf("Tarefas com prioridade %d e categoria %s:\n", prioridade, categoria);
@@ -187,6 +194,7 @@ int filtrarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, con
     }
 }
 
+// Função para exportar tarefas por prioridade em um arquivo.
 int exportarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade, const char arquivo[]) {
     FILE *arq;
     arq = fopen(arquivo, "w");
@@ -213,6 +221,7 @@ int exportarTarefasPorPrioridade(ListaDeTarefas lt, int prioridade, const char a
     return 1;
 }
 
+// Função para exportar tarefas por categoria em um arquivo.
 int exportarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[], const char arquivo[]) {
     FILE *arq;
     arq = fopen(arquivo, "w");
@@ -239,6 +248,7 @@ int exportarTarefasPorCategoria(ListaDeTarefas lt, const char categoria[], const
     return 1;
 }
 
+// Função para exportar tarefas por prioridade e categoria em um arquivo.
 int exportarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, const char categoria[], const char arquivo[]) {
     FILE *arq;
     arq = fopen(arquivo, "w");
@@ -265,6 +275,7 @@ int exportarTarefasPorPrioridadeECategoria(ListaDeTarefas lt, int prioridade, co
     return 1;
 }
 
+// Função para deletar uma tarefa da lista.
 int deletarTarefas(ListaDeTarefas *lt) {
     int num;
     printf("Digite o número da tarefa que deseja deletar: ");
@@ -284,6 +295,7 @@ int deletarTarefas(ListaDeTarefas *lt) {
     }
 }
 
+// Função para listar todas as tarefas da lista.
 int listarTarefas(ListaDeTarefas lt) {
     if (lt.qtd == 0) {
         printf("Nenhuma tarefa cadastrada.\n");
@@ -302,8 +314,7 @@ int listarTarefas(ListaDeTarefas lt) {
     return 1;
 }
 
-
-
+// Função para salvar as tarefas em um arquivo binário.
 int salvarTarefas(ListaDeTarefas *lt, const char *arquivo) {
     FILE *arq;
     arq = fopen(arquivo, "wb");
@@ -320,6 +331,7 @@ int salvarTarefas(ListaDeTarefas *lt, const char *arquivo) {
     return 1;
 }
 
+// Função para carregar as tarefas a partir de um arquivo binário.
 int carregarTarefas(ListaDeTarefas *lt, const char *arquivo) {
     FILE *arq;
     arq = fopen(arquivo, "rb");
